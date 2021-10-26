@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const fetch = () => axios.get("https://inshortsapi.vercel.app/news?category=science");
+const fetch = (s) => {
+    const link = "https://inshortsapi.vercel.app/news?category="+s;
+    return(axios.get(link));
+}
 const newsApi = {
     fetch,
   };
