@@ -7,20 +7,18 @@ const Navbar = () => {
     return (
         <div>
             <Header 
-            actionBlock={
-            <div className="flex">
-              <Search color="#1e1e20" size={24} />
-              <Notification color="#1e1e20" size={24} />
-            <div className="flex">
-            <Button label="Primary Action" />
-            <Filter color="#1e1e20" size={24} />
-            </div>
-            </div>
-            } 
+                actionBlock={
+                    <div className="flex">
+                        <Search color="#1e1e20" size={20} />
+                        <Notification color="#1e1e20" size={20} />
+                        <div className="flex">
+                            <Button label="Filter" icon={Filter} style="secondary"/>
+                        </div>
+                    </div>
+                    } 
             title="Feed.ly"/>
-            
         </div>
-    )
+    );
 }
 
 export default Navbar
