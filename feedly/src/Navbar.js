@@ -9,10 +9,10 @@ const Navbar = () => {
             <Header 
                 actionBlock={
                     <div className="flex space-x-3 ">
-                        <Search color="#1e1e20" size={18} onClick={() => alert('Search')}/>
-                        <Notification color="#1e1e20" size={18} onClick={() => alert('Subscribe')}/>
+                        <Search color="#1e1e20" size={18} />
+                        <Notification color="#1e1e20" size={18} />
                         <div className="flex">
-                            <Button label="Filter" icon={Filter} style="secondary" onClick={() => alert('Filter')} />
+                            <Button label="Filter" icon={Filter} style="secondary"  />
                         </div>
                     </div>
                     } 
