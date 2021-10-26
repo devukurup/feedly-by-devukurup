@@ -5,7 +5,7 @@ import { Search, Filter, Notification } from "@bigbinary/neeto-icons"
 
 const Navbar = () => {
     return (
-        <div className="flex pl-2 pr-2">
+        <div className="flex pl-2 pr-2 neeto-ui-shadow-xs">
             <Header 
                 actionBlock={
                     <div className="flex space-x-3 ">
