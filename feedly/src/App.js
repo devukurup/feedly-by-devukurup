@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Landing from './landing';
 
 const App = () => {
   return (
     <div>
-      <h1>Hello world</h1>
+      <Landing/>
     </div>
   )
 }
