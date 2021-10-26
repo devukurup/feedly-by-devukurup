@@ -19,6 +19,7 @@ const Landing = () => {
       };
     return (
         <div>
+            
             {news.map(n => (
                 <div>
                 <h1>{n.author}</h1>
