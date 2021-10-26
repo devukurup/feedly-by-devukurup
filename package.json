@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@bigbinary/neetoui": "^2.0.96",
+    "formik": "^2.2.9",
+    "react-router": "^5.2.1",
+    "react-router-nav-prompt": "^0.4.1",
+    "react-toastify": "^8.0.3"
+  }
+}
