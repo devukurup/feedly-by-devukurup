@@ -1,10 +1,15 @@
 import React from 'react';
-import Landing from './landing';
+
+import Navbar from './Navbar';
+import Landing from './Landing';
 
 const App = () => {
   return (
     <div>
-      <Landing/>
+      <Navbar />
+      <Landing />
+      
+
     </div>
   )
 }
