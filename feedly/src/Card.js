@@ -23,19 +23,19 @@ const Card = ({news}) => {
                             <Typography style="h3" className= "text-gray-600 text-justify"> {n.title} </Typography>
                         </div>
 
-                        <div>
+                        <div className="pt-2">
                             <Typography  style="body3" className="text-gray-400 text-right" >
                                 {n.author + " at " + n.time + " on " + n.date}
                             </Typography>
                         </div>
 
-                        <div>
+                        <div className="pt-5">
                             <Typography style="body2">
-                                {n.content.substring(0,300) + "..."}    
+                                {n.content.substring(0,300) + "......"}    
                             </Typography>    
                         </div>
 
-                        <div>
+                        <div className="pt-4">
                             <Button
                                 label="Read more"
                                 onClick={() => alert('read more')}
