@@ -18,7 +18,7 @@ const Landing = () => {
         }
       };
     return (
-        <div>
+        <div className="pt-10 pl-20 pr-20">
             
             {news.map(n => (
                 <div>
