@@ -32,7 +32,7 @@ const Card = ({news}) => {
                         <div className="pt-5">
                             <Typography style="body2">
                                 {/* {news.content.substring(0,300) + "......"}     */}
-                                {news.content.substring(0,300) + "......"}
+                                {news.content+ "......"}
                             </Typography>    
                         </div>
 
