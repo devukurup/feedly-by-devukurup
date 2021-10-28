@@ -3,9 +3,9 @@ import { Typography, Button } from "@bigbinary/neetoui/v2";
 
 const SubHeadline = ({ news }) => {
     return (
-<div className="grid grid-cols-2">
+<div className="grid grid-cols-2 ">
                         <div>
-                            <img className=" object-fill h-auto w-auto" src={'https://picsum.photos/seed/picsum/84/84'} />
+                            <img className=" object-fill h-auto w-auto" src={'https://picsum.photos/seed/picsum/200/100'} />
                         </div>
                         <div>
                             <div>

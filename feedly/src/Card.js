@@ -50,14 +50,16 @@ const Card = ({news}) => {
 
             </div>
        
-            <div className=" grid grid-rows-2">
-                <div className="grid grid-cols-2">
+            <div className=" grid grid-rows-2 gap-5">
+
+
+                <div className="grid grid-cols-2 gap-20">
                     < SubHeadline news={news} />
                     < SubHeadline news={news} />
 
                 </div>
 
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-2 gap-20">
             < SubHeadline news={news} />
             < SubHeadline news={news} />
             </div>
