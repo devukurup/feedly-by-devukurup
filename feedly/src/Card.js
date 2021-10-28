@@ -4,13 +4,15 @@ import { Typography, Button } from "@bigbinary/neetoui/v2";
 import SubHeadline from './SubHeadline';
 
 
-const Card = ({news}) => {
+const Card = ({ category, 
+    news}) => {
     const length = 300;
     return (
         <div className="pl-20 pr-20">
-
+{console.log("hi")}
             <div >
-                <Header title={<Typography style="h2">Science News</Typography>} /> 
+                {console.log(category,news)}
+                <Header title={<Typography style="h2">{category.charAt(0).toUpperCase() + category.slice(1) +" News"}</Typography>} /> 
                 <div className="grid grid-cols-2">
 
                     <div>

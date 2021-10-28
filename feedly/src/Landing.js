@@ -11,16 +11,22 @@ const Landing = () => {
 
       const fetchNews = async () => {
         try {
-          const response = await newsApi.fetch('science');
-          console.log(response.data.data[0].title)
-          setNews(response.data.data[0]);
+          const response = await newsApi.fetch(['science','sports']);
+          // console.log(response);
+          setNews(response);
         } catch (error) {
           console.log(error);
         }
       };
     return (
         <div className="pt-10 pl-20 pr-20">
-          <Card news={news}/>
+          {
+            news.map(n => {
+              console.log(n.data.category,n.data.data[0]);
+              return(<Card category={n.data.category} news={n.data.data[0]}/>)
+            })
+
+          }
         </div>
     )
 }
