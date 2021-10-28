@@ -1,13 +1,13 @@
 import React from 'react';
 import { Header } from "@bigbinary/neetoui/v2/layouts";
-import { Typography } from "@bigbinary/neetoui/v2";
-import { Button } from "@bigbinary/neetoui/v2";
+import { Typography, Button } from "@bigbinary/neetoui/v2";
+import SubHeadline from './SubHeadline';
 
 
 const Card = ({news}) => {
+    const length = 300;
     return (
         <div className="pl-20 pr-20">
-            {console.log(news)}
 
             <div >
                 <Header title={<Typography style="h2">Science News</Typography>} /> 
@@ -31,8 +31,7 @@ const Card = ({news}) => {
 
                         <div className="pt-5">
                             <Typography style="body2">
-                                {/* {news.content.substring(0,300) + "......"}     */}
-                                {news.content+ "......"}
+                                {(news?.content?.length > length ? news.content.substring(0,length) : news.content) + "......"}
                             </Typography>    
                         </div>
 
@@ -51,101 +50,18 @@ const Card = ({news}) => {
 
             </div>
        
-            <div className=" grid grid-rows-2">
-                <div className="grid grid-cols-2">
-                    <div className="grid grid-cols-2">
-                        <div>
-                            <img className=" object-fill h-auto w-auto" src={'https://picsum.photos/seed/picsum/84/84'} />
-                        </div>
-                        <div>
-                            <div>
-                                <Typography style="h6" className= "text-left"> {news.title} </Typography>
-                            </div>
+            <div className=" grid grid-rows-2 gap-5">
 
-                            <div className="pt-1">
-                                <Typography  style="body3" className="text-gray-400 text-left" >
-                                    {news.author + " at " + news.time + " on " + news.date}
-                                </Typography>
-                            </div>
 
-                            <div className="pt-1">
-                                <Button
-                                    label="Read more"
-                                    onClick={() => alert('read more')}
-                                    style="link"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-2">
-                        <div>
-                            <img className=" object-fill h-auto w-auto" src={'https://picsum.photos/seed/picsum/84/84'} />
-                        </div>
-                        <div>
-                            <div>
-                                <Typography style="h6" className= "text-left"> {news.title} </Typography>
-                            </div>
-                            <div className="pt-1">
-                                <Typography  style="body3" className="text-gray-400 text-left" >
-                                    {news.author + " at " + news.time + " on " + news.date}
-                                </Typography>
-                            </div>
-                            <div className="pt-1">
-                                <Button
-                                    label="Read more"
-                                    onClick={() => alert('read more')}
-                                    style="link"
-                                />
-                            </div>
-                        </div>
-                    </div>
+                <div className="grid grid-cols-2 gap-20">
+                    < SubHeadline news={news} />
+                    < SubHeadline news={news} />
+
                 </div>
 
-            <div className="grid grid-cols-2">
-            <div className="grid grid-cols-2">
-                <div>
-                    <img className=" object-fill h-auto w-auto" src={'https://picsum.photos/seed/picsum/84/84'} />
-                </div>
-                <div>
-                    <div>
-                    <Typography style="h6" className= "text-left"> {news.title} </Typography>
-                    </div>
-                    <div className="pt-1">
-                            <Typography  style="body3" className="text-gray-400 text-left" >
-                                {news.author + " at " + news.time + " on " + news.date}
-                            </Typography>
-                    </div>
-                    <div className="pt-1">
-                    <Button
-                                label="Read more"
-                                onClick={() => alert('read more')}
-                                style="link"
-                            />
-                    </div>
-                </div>
-            </div>
-            <div className="grid grid-cols-2">
-                <div>
-                    <img className=" object-fill h-auto w-auto" src={'https://picsum.photos/seed/picsum/84/84'} />
-                </div>
-                <div>
-                    <div>
-                    <Typography style="h6" className= "text-left"> {news.title} </Typography>
-                    </div>
-                    <div className="pt-1">
-                            <Typography  style="body3" className="text-gray-400 text-left" >
-                                {news.author + " at " + news.time + " on " + news.date}
-                            </Typography>
-                    </div>
-                    <div className="pt-1">
-                    <Button
-                                label="Read more"
-                                onClick={() => alert('read more')}
-                                style="link"
-                            />
-                    </div>
-                </div>
-            </div>
+            <div className="grid grid-cols-2 gap-20">
+            < SubHeadline news={news} />
+            < SubHeadline news={news} />
             </div>
             <hr className="mt-8 mb-8"/>
             
