@@ -22,18 +22,18 @@ const Card = ({ category,
                     <div>
 
                         <div>
-                            <Typography style="h3" className= "text-gray-600 text-justify"> {news.title} </Typography>
+                            <Typography style="h3" className= "text-gray-600 text-justify"> {news[0].title} </Typography>
                         </div>
 
                         <div className="pt-2">
                             <Typography  style="body3" className="text-gray-400 text-right" >
-                                {news.author + " at " + news.time + " on " + news.date}
+                                {news[0].author + " at " + news[0].time + " on " + news[0].date}
                             </Typography>
                         </div>
 
                         <div className="pt-5">
                             <Typography style="body2">
-                                {(news?.content?.length > length ? news.content.substring(0,length) : news.content) + "......"}
+                                {(news[0]?.content?.length > length ? news[0].content.substring(0,length) : news[0].content) + "......"}
                             </Typography>    
                         </div>
 
@@ -56,14 +56,14 @@ const Card = ({ category,
 
 
                 <div className="grid grid-cols-2 gap-20">
-                    < SubHeadline news={news} />
-                    < SubHeadline news={news} />
+                    < SubHeadline news={news[1]} />
+                    < SubHeadline news={news[2]} />
 
                 </div>
 
             <div className="grid grid-cols-2 gap-20">
-            < SubHeadline news={news} />
-            < SubHeadline news={news} />
+            < SubHeadline news={news[3]} />
+            < SubHeadline news={news[4]} />
             </div>
             <hr className="mt-8 mb-8"/>
             

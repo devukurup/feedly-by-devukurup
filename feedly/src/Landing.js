@@ -23,7 +23,7 @@ const Landing = () => {
           {
             news.map(n => {
               console.log(n.data.category,n.data.data[0]);
-              return(<Card category={n.data.category} news={n.data.data[0]}/>)
+              return(<Card category={n.data.category} news={n.data.data}/>)
             })
 
           }
