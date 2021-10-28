@@ -12,8 +12,8 @@ const Landing = () => {
       const fetchNews = async () => {
         try {
           const response = await newsApi.fetch('science');
-          // console.log(response.data.data)
-          setNews(response.data.data);
+          console.log(response.data.data[0].title)
+          setNews(response.data.data[0]);
         } catch (error) {
           console.log(error);
         }
