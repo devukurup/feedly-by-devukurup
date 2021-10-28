@@ -5,9 +5,9 @@ import SubHeadline from './SubHeadline';
 
 
 const Card = ({news}) => {
+    const length = 300;
     return (
         <div className="pl-20 pr-20">
-            {console.log(news)}
 
             <div >
                 <Header title={<Typography style="h2">Science News</Typography>} /> 
@@ -31,8 +31,7 @@ const Card = ({news}) => {
 
                         <div className="pt-5">
                             <Typography style="body2">
-                                {/* {news.content.substring(0,300) + "......"}     */}
-                                {news.content+ "......"}
+                                {(news?.content?.length > length ? news.content.substring(0,length) : news.content) + "......"}
                             </Typography>    
                         </div>
 
