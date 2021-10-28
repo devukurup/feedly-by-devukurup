@@ -24,9 +24,10 @@ const FilterPane = ({ showPane, setShowPane }) => {
             <Checkbox checked id="sports" label="Sports" />
             <Checkbox checked id="world" label="World" />
             <Checkbox checked id="technology" label="Technology" />
-          </div>
+          
           <hr className="w-full" />
           <Checkbox checked id="archived" label="Include archived articles" />
+          </div>
         </Pane.Body>
 
         <Pane.Footer className="flex items-center space-x-2">
