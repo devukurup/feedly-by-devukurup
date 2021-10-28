@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const fetch = (s) => {
-    const link = "https://inshortsapi.vercel.app/news?category="+s;
-    return(axios.get(link));
+const fetch = (category) => {
+    const links = category.map(cat => "https://inshortsapi.vercel.app/news?category="+cat)
+    const response = axios.all(links.map(link => axios.get(link)))
+    return(response);
 }
 const newsApi = {
     fetch,
