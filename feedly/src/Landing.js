@@ -1,18 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import newsApi from './apis/news';
 import Card from './Card';
+import filterContext from './contexts/filter';
 
 const Landing = () => {
     const [news, setNews] = useState([]);
+    const { categoryList } = useContext(filterContext)
 
     useEffect(() => {
         fetchNews();
-      }, []);
+      },[categoryList]);
 
       const fetchNews = async () => {
         try {
-          const response = await newsApi.fetch(['science','sports']);
-          // console.log(response);
+          const response = await newsApi.fetch(categoryList);
+          console.log(response)
           setNews(response);
         } catch (error) {
           console.log(error);
@@ -22,7 +24,6 @@ const Landing = () => {
         <div className="pt-10 pl-20 pr-20">
           {
             news.map(n => {
-              console.log(n.data.category,n.data.data[0]);
               return(<Card category={n.data.category} news={n.data.data}/>)
             })
 

@@ -1,11 +1,44 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Button, Typography, Pane, Checkbox } from "@bigbinary/neetoui/v2";
 import { Check } from "@bigbinary/neeto-icons";
+import { categories } from "./category";
+import filterContext from "./contexts/filter";
 
 const FilterPane = ({ showPane, setShowPane }) => {
+  
+
+  const { checkedState, setCheckedState, categoryList, setCategoryList, updateState } = useContext(filterContext)
+  const [prevState, setPrevState] = useState(checkedState);
+  const handleOnChange = (position) => {
+    
+   const updatedCheckedState = checkedState.map((item, index) => {
+      if(position === 0){
+        return !(checkedState[position])
+      }
+      else{
+        if(item === true && index === 0){
+          return !(checkedState[index])
+        }
+        return(index === position ? !item : item)
+      }
+    }
+    )
+
+    updateState(updatedCheckedState)
+
+    
+  };
+
+  const handleOnCancelled = (prevState) => {
+    updateState(prevState)
+  }
+
+
   return (
     <div>
-      <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
+      <Pane isOpen={showPane} onClose={() => {
+              setShowPane(false);
+              handleOnCancelled(prevState)}}>
         <Pane.Header>
           <Typography style="h2" weight="semibold">
             Filter Articles
@@ -17,17 +50,14 @@ const FilterPane = ({ showPane, setShowPane }) => {
             Category
           </Typography>
           <div className="space-y-9">
-            <Checkbox checked id="all" label="All" />
-            <Checkbox checked id="science" label="Science" />
-            <Checkbox checked id="business" label="Business" />
-            <Checkbox checked id="national" label="National" />
-            <Checkbox checked id="sports" label="Sports" />
-            <Checkbox checked id="world" label="World" />
-            <Checkbox checked id="technology" label="Technology" />
-          
+            {categories.map(({ name, id }, index) => {
+              return(<Checkbox onChange={()=>handleOnChange(index)} checked={checkedState[index]}  label={name} id={id} />)
+            })}
+
+            </div>
           <hr className="w-full" />
           <Checkbox checked id="archived" label="Include archived articles" />
-          </div>
+          
         </Pane.Body>
 
         <Pane.Footer className="flex items-center space-x-2">
@@ -35,13 +65,20 @@ const FilterPane = ({ showPane, setShowPane }) => {
             icon={Check}
             size="large"
             label="Save Changes"
-            onClick={() => setShowPane(false)}
+            onClick={() => {
+              setShowPane(false);
+
+            }}
           />
           <Button
             style="text"
             size="large"
             label="Cancel"
-            onClick={() => setShowPane(false)}
+            onClick={() => {
+              setShowPane(false);
+              handleOnCancelled(prevState);
+              }
+            }
           />
         </Pane.Footer>
       </Pane>
