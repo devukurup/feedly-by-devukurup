@@ -1,7 +1,9 @@
 import React from 'react';
 import { Typography, Button } from "@bigbinary/neetoui/v2";
+import { useHistory } from "react-router-dom";
 
-const SubHeadline = ({ news }) => {
+const SubHeadline = ({ news, category }) => {
+    const history = useHistory();
     return (
 <div className="grid grid-cols-2 ">
                         <div>
@@ -21,7 +23,10 @@ const SubHeadline = ({ news }) => {
                             <div className="pt-1">
                                 <Button
                                     label="Read more"
-                                    onClick={() => alert('read more')}
+                                    onClick={() => history.push({
+                                        pathname: `/article/${news.url.replace("https://www.inshorts.com/en/news/","")}`,
+                                        state: {news,category}
+                                    })}
                                     style="link"
                                 />
                             </div>
