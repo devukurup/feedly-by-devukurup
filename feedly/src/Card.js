@@ -2,10 +2,12 @@ import React from 'react';
 import { Header } from "@bigbinary/neetoui/v2/layouts";
 import { Typography, Button} from "@bigbinary/neetoui/v2";
 import SubHeadline from './SubHeadline';
+import { useHistory } from "react-router-dom";
 
 
 const Card = ({ category, 
     news}) => {
+    const history = useHistory();
     const length = 300;
     return (
         <div className="pl-20 pr-20">
@@ -39,7 +41,7 @@ const Card = ({ category,
                         <div className="pt-4">
                             <Button
                                 label="Read more"
-                                onClick={() => alert('read more')}
+                                onClick={() => history.push(`/article/${news[0].url.replace("https://www.inshorts.com/en/news/","")}`)}
                                 style="link"
                             />
                         </div>

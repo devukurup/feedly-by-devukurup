@@ -26,7 +26,7 @@ const Landing = () => {
       }
     return (
         <div className="pt-10 pl-20 pr-20">
-              <div className="pt-10 pl-20 pr-20 space-x-3">
+              <div className="pl-20 pr-20 space-x-3">
                 
                   {
                   categoryList.map(( name ) => {
