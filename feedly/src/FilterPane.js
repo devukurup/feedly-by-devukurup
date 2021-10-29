@@ -1,17 +1,26 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
 import { Button, Typography, Pane, Checkbox } from "@bigbinary/neetoui/v2";
 import { Check } from "@bigbinary/neeto-icons";
 import { categories } from "./category";
+import filterContext from "./contexts/filter";
 
 const FilterPane = ({ showPane, setShowPane }) => {
 
-  const [checkedState, setCheckedState] = useState(
-    new Array(categories.length).fill(false)
-  );
+  const { checkedState, setCheckedState } = useContext(filterContext)
+
+  // const [checkedState, setCheckedState] = useState(
+  //   new Array(categories.length).fill(false)
+  // );
 
   const handleOnChange = (position) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
+    const updatedCheckedState = checkedState.map((item, index) => {
+
+      if(position === 0){
+          return !(checkedState[position])
+      }
+      else{
+      return(index === position ? !item : item)}
+    }
     );
     setCheckedState(updatedCheckedState);
   };
