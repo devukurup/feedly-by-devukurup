@@ -6,10 +6,10 @@ import filterContext from './contexts/filter';
 import { categories } from './category';
 
 const App = () => {
-  const [checkedState, setCheckedState] = useState(
-    new Array(categories.length).fill(false)
-  );
-  const newsFeedFilter = {checkedState,setCheckedState };
+  const [categoryList, setCategoryList] = useState(['business','national', 'sports','world'])
+  const [checkedState, setCheckedState] = useState(categories.map(({id}) => ( categoryList.includes(id) )));
+  
+  const newsFeedFilter = {checkedState, setCheckedState, categoryList, setCategoryList};
   return (
     <div>
     <filterContext.Provider value={newsFeedFilter}>

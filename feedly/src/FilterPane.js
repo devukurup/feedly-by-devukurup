@@ -6,12 +6,7 @@ import filterContext from "./contexts/filter";
 
 const FilterPane = ({ showPane, setShowPane }) => {
 
-  const { checkedState, setCheckedState } = useContext(filterContext)
-
-  // const [checkedState, setCheckedState] = useState(
-  //   new Array(categories.length).fill(false)
-  // );
-
+  const { checkedState, setCheckedState, categoryList, setCategoryList } = useContext(filterContext)
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) => {
 
@@ -22,6 +17,10 @@ const FilterPane = ({ showPane, setShowPane }) => {
       return(index === position ? !item : item)}
     }
     );
+    setCategoryList((categories.filter( ({ id }, index) => {
+      return checkedState[index]
+    } )).map(({name}) => name));
+    console.log(categoryList)
     setCheckedState(updatedCheckedState);
   };
 
