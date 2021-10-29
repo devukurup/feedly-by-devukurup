@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Typography, Pane, Checkbox } from "@bigbinary/neetoui/v2";
 import { Check } from "@bigbinary/neeto-icons";
 
