@@ -1,36 +1,44 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Button, Typography, Pane, Checkbox } from "@bigbinary/neetoui/v2";
 import { Check } from "@bigbinary/neeto-icons";
 import { categories } from "./category";
 import filterContext from "./contexts/filter";
 
 const FilterPane = ({ showPane, setShowPane }) => {
+  
 
-  const { checkedState, setCheckedState, categoryList, setCategoryList } = useContext(filterContext)
+  const { checkedState, setCheckedState, categoryList, setCategoryList, updateState } = useContext(filterContext)
+  const [prevState, setPrevState] = useState(checkedState);
   const handleOnChange = (position) => {
-    const updatedCheckedState = checkedState.map((item, index) => {
-
+    
+   const updatedCheckedState = checkedState.map((item, index) => {
       if(position === 0){
-          return !(checkedState[position])
+        return !(checkedState[position])
       }
       else{
-        if(item && index==0){
-          return !(checkedState[position])
+        if(item === true && index === 0){
+          return !(checkedState[index])
         }
-      return(index === position ? !item : item)}
+        return(index === position ? !item : item)
+      }
     }
-    );
-    setCategoryList((categories.filter( ({ id }, index) => {
-      return checkedState[index]
-    } )).map(({name}) => name));
-    // console.log(categoryList)
-    setCheckedState(updatedCheckedState);
+    )
+
+    updateState(updatedCheckedState)
+
+    
   };
+
+  const handleOnCancelled = (prevState) => {
+    updateState(prevState)
+  }
 
 
   return (
     <div>
-      <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
+      <Pane isOpen={showPane} onClose={() => {
+              setShowPane(false);
+              handleOnCancelled(prevState)}}>
         <Pane.Header>
           <Typography style="h2" weight="semibold">
             Filter Articles
@@ -57,13 +65,20 @@ const FilterPane = ({ showPane, setShowPane }) => {
             icon={Check}
             size="large"
             label="Save Changes"
-            onClick={() => setShowPane(false)}
+            onClick={() => {
+              setShowPane(false);
+
+            }}
           />
           <Button
             style="text"
             size="large"
             label="Cancel"
-            onClick={() => setShowPane(false)}
+            onClick={() => {
+              setShowPane(false);
+              handleOnCancelled(prevState);
+              }
+            }
           />
         </Pane.Footer>
       </Pane>

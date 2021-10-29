@@ -9,11 +9,12 @@ const Landing = () => {
 
     useEffect(() => {
         fetchNews();
-      }, []);
+      },[categoryList]);
 
       const fetchNews = async () => {
         try {
           const response = await newsApi.fetch(categoryList);
+          console.log(response)
           setNews(response);
         } catch (error) {
           console.log(error);
