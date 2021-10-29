@@ -1,8 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button, Typography, Pane, Checkbox } from "@bigbinary/neetoui/v2";
 import { Check } from "@bigbinary/neeto-icons";
+import { categories } from "./category";
 
 const FilterPane = ({ showPane, setShowPane }) => {
+
+  const [checkedState, setCheckedState] = useState(
+    new Array(categories.length).fill(false)
+  );
+
+  const handleOnChange = (position) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+    setCheckedState(updatedCheckedState);
+  };
+
+
   return (
     <div>
       <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
@@ -17,17 +31,14 @@ const FilterPane = ({ showPane, setShowPane }) => {
             Category
           </Typography>
           <div className="space-y-9">
-            <Checkbox checked id="all" label="All" />
-            <Checkbox checked id="science" label="Science" />
-            <Checkbox checked id="business" label="Business" />
-            <Checkbox checked id="national" label="National" />
-            <Checkbox checked id="sports" label="Sports" />
-            <Checkbox checked id="world" label="World" />
-            <Checkbox checked id="technology" label="Technology" />
-          
+            {categories.map(({ name, id }, index) => {
+              return(<Checkbox onChange={()=>handleOnChange(index)} checked={checkedState[index]}  label={name} id={id} />)
+            })}
+
+            </div>
           <hr className="w-full" />
           <Checkbox checked id="archived" label="Include archived articles" />
-          </div>
+          
         </Pane.Body>
 
         <Pane.Footer className="flex items-center space-x-2">
