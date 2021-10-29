@@ -14,13 +14,16 @@ const FilterPane = ({ showPane, setShowPane }) => {
           return !(checkedState[position])
       }
       else{
+        if(item && index==0){
+          return !(checkedState[position])
+        }
       return(index === position ? !item : item)}
     }
     );
     setCategoryList((categories.filter( ({ id }, index) => {
       return checkedState[index]
     } )).map(({name}) => name));
-    console.log(categoryList)
+    // console.log(categoryList)
     setCheckedState(updatedCheckedState);
   };
 
