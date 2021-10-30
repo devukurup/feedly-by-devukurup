@@ -26,7 +26,7 @@ const App = () => {
       return val ? categories[index].id : null;
     });
     const removeNull = updatedList.filter(
-      (val) => val !== null && val !== "all"
+      (val) => val !== null 
     );
     setCategoryList(removeNull);
   };
