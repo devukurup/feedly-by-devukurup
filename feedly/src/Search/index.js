@@ -28,7 +28,7 @@ function SearchModal() {
         try {
           const response = await newsApi.fetch(categoryList);
           const newNewsArray = response.map(dat => dat.data.data);
-          setCategoryNews(newNewsArray.flat(1));
+          setCategoryNews(newNewsArray.flat(1).slice(0,6));
         } catch (error) {
           console.log(error);
         }
@@ -44,10 +44,15 @@ function SearchModal() {
       }
 
       const handleSearch = () => {
+          if(searchValue.length === 0)
+          {
+              setCardEnabler(false)
+          }
+          else {
         const suggestions = categoryNews.filter(({title}) => title.toLowerCase().includes(searchValue.toLowerCase()))
         setCardEnabler(true);
         setSuggestionNews(suggestions)
-        console.log(suggestions)
+          }
       }
 
   return ReactDOM.createPortal(
