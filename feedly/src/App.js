@@ -6,6 +6,7 @@ import { categories } from "./category";
 import Article from "./Article";
 import { Switch, Route } from "react-router-dom";
 import SearchModal from "./Search";
+import Subscribe from "./Subscribe";
 
 const App = () => {
   const [categoryList, setCategoryList] = useState([
@@ -16,6 +17,7 @@ const App = () => {
   ]);
   const [catParam, setCatParam] = useState(true);
   const [enableModal, setEnableModal] = useState(false);
+  const [subscribeModal, setSubscribeModal] = useState(false)
   const [checkedState, setCheckedState] = useState(
     categories.map(({ id }) => categoryList.includes(id))
   );
@@ -44,7 +46,9 @@ const App = () => {
     archived,
     setArchived,
     enableModal,
-    setEnableModal
+    setEnableModal,
+    subscribeModal,
+    setSubscribeModal
   };
 
   return (
@@ -52,6 +56,7 @@ const App = () => {
       <filterContext.Provider value={newsFeedFilter}>
         <Navbar />
         {enableModal && <SearchModal />}
+        {subscribeModal && <Subscribe/>}
         
         <Switch>
           <Route exact path="/">
