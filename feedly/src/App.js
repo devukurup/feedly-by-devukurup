@@ -13,6 +13,7 @@ const App = () => {
     "sports",
     "world",
   ]);
+  const [catParam, setCatParam] = useState(true);
   const [checkedState, setCheckedState] = useState(
     categories.map(({ id }) => categoryList.includes(id))
   );
@@ -35,6 +36,8 @@ const App = () => {
     categoryList,
     setCategoryList,
     updateState,
+    catParam,
+    setCatParam
   };
 
   return (
