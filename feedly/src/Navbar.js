@@ -9,7 +9,7 @@ import filterContext from "./contexts/filter";
 const Navbar = () => {
 
   const history = useHistory();
-  const {  enableModal, setEnableModal  } = useContext(filterContext)
+  const {  enableModal, setEnableModal, setSubscribeModal  } = useContext(filterContext)
   const [showPane, setShowPane] = useState(false);
   const location = useLocation();
   return (
@@ -25,7 +25,7 @@ const Navbar = () => {
 
             <Tooltip content="Subscribe" placement="bottom-end">
               <button>
-                <Notification color="#1e1e20" size={25} />
+                <Notification color="#1e1e20" size={25} onClick={() => setSubscribeModal(true)}/>
               </button>
             </Tooltip>
 
