@@ -5,6 +5,7 @@ import filterContext from "./contexts/filter";
 import { categories } from "./category";
 import Article from "./Article";
 import { Switch, Route } from "react-router-dom";
+import SearchModal from "./Search";
 
 const App = () => {
   const [categoryList, setCategoryList] = useState([
@@ -14,6 +15,7 @@ const App = () => {
     "world",
   ]);
   const [catParam, setCatParam] = useState(true);
+  const [enableModal, setEnableModal] = useState(false);
   const [checkedState, setCheckedState] = useState(
     categories.map(({ id }) => categoryList.includes(id))
   );
@@ -40,14 +42,17 @@ const App = () => {
     catParam,
     setCatParam,
     archived,
-    setArchived
+    setArchived,
+    enableModal,
+    setEnableModal
   };
 
   return (
     <div>
       <filterContext.Provider value={newsFeedFilter}>
         <Navbar />
-
+        {enableModal && <SearchModal />}
+        
         <Switch>
           <Route exact path="/">
             <Landing />

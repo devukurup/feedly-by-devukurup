@@ -29,7 +29,7 @@ const Card = ({ category,
                 
                 return new Date(newBDate) - new Date(newADate);
               });
-              console.log(news)
+            //   console.log(news)
         }
 
     return (
