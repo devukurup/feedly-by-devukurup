@@ -26,5 +26,22 @@ export const categories = [
     {
         name: "Technology",
         id: "technology"
+    },
+    {
+        name: "Startup",
+        id: "startup"
+    },
+    {
+        name: "Entertainment",
+        id: "entertainment"
+    },
+    {
+        name: "Politics",
+        id: "politics"
+    },
+    {
+        name: "Miscellaneous",
+        id: "miscellaneous"
     }
+
 ];

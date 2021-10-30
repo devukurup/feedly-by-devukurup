@@ -23,15 +23,8 @@ const FilterPane = ({ showPane, setShowPane }) => {
   const handleOnChange = (position) => {
     
    const updatedCheckedState = checkedState.map((item, index) => {
-      if(position === 0){
-        return !(checkedState[position])
-      }
-      else{
-        if(item === true && index === 0){
-          return !(checkedState[index])
-        }
         return(index === position ? !item : item)
-      }
+      
     }
     )
 
@@ -66,8 +59,8 @@ const FilterPane = ({ showPane, setShowPane }) => {
             })}
 
             </div>
-          <hr className="w-full" />
-          <Checkbox checked={archiveValue} onChange={()=>setArchiveValue(!archiveValue)} id="archived" label="Include archived articles" />
+          <hr className="w-full " />
+          <Checkbox  className="pb-10" checked={archiveValue} onChange={()=>setArchiveValue(!archiveValue)} id="archived" label="Include archived articles" />
           
         </Pane.Body>
 
