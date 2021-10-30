@@ -3,9 +3,12 @@ import { Header } from "@bigbinary/neetoui/v2/layouts";
 import { Button, Typography, Tooltip } from "@bigbinary/neetoui/v2";
 import { Search, Filter, Notification, Check } from "@bigbinary/neeto-icons";
 import FilterPane from "./FilterPane";
+import { useHistory, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const history = useHistory();
   const [showPane, setShowPane] = useState(false);
+  const location = useLocation();
   return (
     <div className="flex pl-2 pr-2 items-baseline neeto-ui-shadow-xs">
       <Header
@@ -28,13 +31,20 @@ const Navbar = () => {
                 label="Filter"
                 icon={Filter}
                 style="secondary"
-                onClick={() => setShowPane(true)}
+                onClick={() => {
+                  if(location.pathname !== `/`)
+                  {
+                    history.push('/')
+                  }
+                  return  setShowPane(true);
+                } }
               />
             </div>
           </div>
         }
         title={
-          <Typography style="h3" className="text-grey-700">
+          <Typography style="h3" className="text-grey-700 cursor-pointer" 
+          onClick={() => history.push(`/`)}>
             Feed.ly
           </Typography>
         }

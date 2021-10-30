@@ -11,7 +11,7 @@ const Article = () => {
   const { slug } = useParams();
   const { state } = useLocation();
   const news = state.news? state.news : state.headlines;
-  const {category } = state;
+  const { category } = state;
   const [subHeadlines, setSubHeadlines] = useState([])
   
   useEffect(() => {
