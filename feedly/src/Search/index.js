@@ -5,16 +5,19 @@ import { Search, Down } from "@bigbinary/neeto-icons";
 import filterContext from "../contexts/filter";
 import newsApi from "../apis/news";
 import debounce from "lodash/debounce";
+import { useHistory } from "react-router-dom";
 
 function SearchModal() {
+    const history = useHistory();
     const {  enableModal, setEnableModal, categoryList  } = useContext(filterContext)
     const [ searchValue, setSearchValue ] = useState('');
     const [categoryNews, setCategoryNews] = useState([])
     const [ suggestionNews, setSuggestionNews] = useState([])
     const [ cardEnabler, setCardEnabler ] = useState(false)
+    const category = "all"
 
   
-    const debouncedChangeHandler = useMemo(() => debounce((input) => setSearchValue(input), 2000))
+    const debouncedChangeHandler = useMemo(() => debounce((input) => setSearchValue(input), 600))
     useEffect(() => {
         fetchNews();
         handleSearch();
@@ -41,8 +44,7 @@ function SearchModal() {
       }
 
       const handleSearch = () => {
-        console.log("im here")
-        const suggestions = categoryNews.filter(({title}) => title.includes(searchValue))
+        const suggestions = categoryNews.filter(({title}) => title.toLowerCase().includes(searchValue.toLowerCase()))
         setCardEnabler(true);
         setSuggestionNews(suggestions)
         console.log(suggestions)
@@ -52,16 +54,24 @@ function SearchModal() {
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" onClick={() => setEnableModal(false)}>
       <div className="relative top-1/3 mx-auto p-5 w-1/3 " onClick={(e) => e.stopPropagation()}>
         <Input className="focus:outline-none" prefix={<Search size={15} color="#1e1e20" />} placeholder="Search for an article" suffix={<Down size={15} color="#1e1e20" />} onChange={handleChange} />
-        {
-            
-            cardEnabler && 
-            <div>
-                {suggestionNews.map((news) => {
+        <div className="bg-white">
+            {
+                cardEnabler && 
+                suggestionNews.map((news) => {
+                return( <div className="border">
+                <Typography className="cursor-pointer" style="body2" onClick={() => {
+                                    setSuggestionNews([])
+                                    setCardEnabler(false);
+                                    setEnableModal(false);
+                                    history.push({
+                                    pathname: `/article/${news?.url.replace("https://www.inshorts.com/en/news/","")}`,
+                                    state: {news,category}
+                                })}}>{news?.title}</Typography>
+            </div>)
+                })
 
-                    <div> {console.log("here")}<Typography style="body2">{news?.title}</Typography></div>
-                })}
-             </div>
-        }
+            }
+        </div>
       </div>
     </div>,
     document.getElementById("search-portal-root")
