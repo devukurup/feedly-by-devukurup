@@ -62,13 +62,13 @@ const Card = ({ category,
 
                 <div className="grid grid-cols-2 gap-20">
                     < SubHeadline news={news[1]} category={category} />
-                    < SubHeadline news={news[2]} />
+                    < SubHeadline news={news[2]} category={category} />
 
                 </div>
 
             <div className="grid grid-cols-2 gap-20">
-            < SubHeadline news={news[3]} />
-            < SubHeadline news={news[4]} />
+            < SubHeadline news={news[3]} category={category}/>
+            < SubHeadline news={news[4]} category={category}/>
             </div>
             <hr className="mt-8 mb-8"/>
             
