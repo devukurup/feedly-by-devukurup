@@ -2,11 +2,14 @@ import React from 'react';
 import { Header } from "@bigbinary/neetoui/v2/layouts";
 import { Typography, Button} from "@bigbinary/neetoui/v2";
 import SubHeadline from './SubHeadline';
+import { useHistory } from "react-router-dom";
 
 
 const Card = ({ category, 
     news}) => {
+    const history = useHistory();
     const length = 300;
+    const headlines = news[0];
     return (
         <div className="pl-20 pr-20">
 
@@ -21,25 +24,28 @@ const Card = ({ category,
                     <div>
 
                         <div>
-                            <Typography style="h3" className= "text-gray-600 text-justify"> {news[0].title} </Typography>
+                            <Typography style="h3" className= "text-gray-600 text-justify"> {headlines.title} </Typography>
                         </div>
 
                         <div className="pt-2">
                             <Typography  style="body3" className="text-gray-400 text-right" >
-                                {news[0].author + " at " + news[0].time + " on " + news[0].date}
+                                {headlines.author + " at " + headlines.time + " on " + headlines.date}
                             </Typography>
                         </div>
 
                         <div className="pt-5">
                             <Typography style="body2">
-                                {(news[0]?.content?.length > length ? news[0].content.substring(0,length) : news[0].content) + "......"}
+                                {(headlines?.content?.length > length ? headlines.content.substring(0,length) : headlines.content) + "......"}
                             </Typography>    
                         </div>
 
                         <div className="pt-4">
                             <Button
                                 label="Read more"
-                                onClick={() => alert('read more')}
+                                onClick={() => history.push({
+                                    pathname: `/article/${headlines?.url.replace("https://www.inshorts.com/en/news/","")}`,
+                                    state: {headlines,category}
+                                })}
                                 style="link"
                             />
                         </div>
@@ -55,7 +61,7 @@ const Card = ({ category,
 
 
                 <div className="grid grid-cols-2 gap-20">
-                    < SubHeadline news={news[1]} />
+                    < SubHeadline news={news[1]} category={category} />
                     < SubHeadline news={news[2]} />
 
                 </div>

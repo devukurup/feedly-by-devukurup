@@ -2,10 +2,11 @@ import React, {useEffect, useState, useContext} from 'react';
 import newsApi from './apis/news';
 import Card from './Card';
 import filterContext from './contexts/filter';
+import { Tag } from "@bigbinary/neetoui/v2";
 
 const Landing = () => {
     const [news, setNews] = useState([]);
-    const { categoryList } = useContext(filterContext)
+    const { categoryList, setCategoryList } = useContext(filterContext)
 
     useEffect(() => {
         fetchNews();
@@ -20,8 +21,18 @@ const Landing = () => {
           console.log(error);
         }
       };
+      const handleClose = (name) => {
+        setCategoryList(categoryList.filter(n => n!==name))
+      }
     return (
         <div className="pt-10 pl-20 pr-20">
+              <div className="pl-20 pr-20 space-x-3">
+                
+                  {
+                  categoryList.map(( name ) => {
+                          return(<Tag label={name.charAt(0).toUpperCase()+name.slice(1)}  onClose={() => handleClose(name)}/>)
+                        })}
+              </div>
           {
             news.map(n => {
               return(<Card category={n.data.category} news={n.data.data}/>)
