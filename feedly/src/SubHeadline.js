@@ -2,7 +2,9 @@ import React from 'react';
 import { Typography, Button } from "@bigbinary/neetoui/v2";
 import { useHistory } from "react-router-dom";
 
-const SubHeadline = ({ news, category }) => {
+const SubHeadline = ( props ) => {
+    const news = props.news
+    const category = props.category
     const history = useHistory();
     return (
 <div className="grid grid-cols-2 ">
@@ -11,12 +13,12 @@ const SubHeadline = ({ news, category }) => {
                         </div>
                         <div>
                             <div>
-                                <Typography style="h6" className= "text-left"> {news.title} </Typography>
+                                <Typography style="h6" className= "text-left"> {news?.title} </Typography>
                             </div>
 
                             <div className="pt-1">
                                 <Typography  style="body3" className="text-gray-400 text-left" >
-                                    {news.author + " at " + news.time + " on " + news.date}
+                                    {news?.author + " at " + news?.time + " on " + news?.date}
                                 </Typography>
                             </div>
 
@@ -24,7 +26,7 @@ const SubHeadline = ({ news, category }) => {
                                 <Button
                                     label="Read more"
                                     onClick={() => history.push({
-                                        pathname: `/article/${news.url.replace("https://www.inshorts.com/en/news/","")}`,
+                                        pathname: `/article/${news?.url.replace("https://www.inshorts.com/en/news/","")}`,
                                         state: {news,category}
                                     })}
                                     style="link"
