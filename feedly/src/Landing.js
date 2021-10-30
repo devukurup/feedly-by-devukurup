@@ -3,26 +3,30 @@ import newsApi from './apis/news';
 import Card from './Card';
 import filterContext from './contexts/filter';
 import { Tag } from "@bigbinary/neetoui/v2";
+import { categories } from './category';
 
 const Landing = () => {
     const [news, setNews] = useState([]);
-    const { categoryList, setCategoryList } = useContext(filterContext)
+    const { categoryList, setCategoryList, setCatParam, catParam } = useContext(filterContext)
 
     useEffect(() => {
         fetchNews();
+       
       },[categoryList]);
 
       const fetchNews = async () => {
         try {
           const response = await newsApi.fetch(categoryList);
-          console.log(response)
+          // console.log(response)
           setNews(response);
         } catch (error) {
           console.log(error);
         }
       };
       const handleClose = (name) => {
-        setCategoryList(categoryList.filter(n => n!==name))
+        setCatParam(!catParam)
+        return setCategoryList(categoryList.filter(n => n!==name))
+
       }
     return (
         <div className="pt-10 pl-20 pr-20">

@@ -3,12 +3,22 @@ import { Button, Typography, Pane, Checkbox } from "@bigbinary/neetoui/v2";
 import { Check } from "@bigbinary/neeto-icons";
 import { categories } from "./category";
 import filterContext from "./contexts/filter";
+import { useCallback } from 'react';
 
 const FilterPane = ({ showPane, setShowPane }) => {
   
 
-  const { checkedState, setCheckedState, categoryList, setCategoryList, updateState } = useContext(filterContext)
+  const { checkedState, setCheckedState, categoryList, setCategoryList, updateState, catParam } = useContext(filterContext)
   const [prevState, setPrevState] = useState(checkedState);
+
+  useEffect(()=>{
+    updateChangedCategoryList()
+  },[catParam])
+
+  const updateChangedCategoryList = useCallback(() => {
+    setCheckedState(categories.map(({ id }) => categoryList.includes(id)));
+  })
+
   const handleOnChange = (position) => {
     
    const updatedCheckedState = checkedState.map((item, index) => {
