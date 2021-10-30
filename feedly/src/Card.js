@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Header } from "@bigbinary/neetoui/v2/layouts";
 import { Typography, Button} from "@bigbinary/neetoui/v2";
 import SubHeadline from './SubHeadline';
 import { useHistory } from "react-router-dom";
+import filterContext from "./contexts/filter";
 
 
 const Card = ({ category, 
     news}) => {
+        const {  archived  } = useContext(filterContext)
     const history = useHistory();
     const length = 300;
     const headlines = news[0];
+
+        useEffect(() => {
+            sortNews();
+
+        }, [])
+
+        const sortNews = () => {
+                news = news.sort(function(a,b){
+                var newBDate = b.date.split(" ");
+                var Byear = newBDate[2].split(",");
+                newBDate = newBDate[1]+" "+newBDate[0]+", "+ Byear[0]
+                var newADate = a.date.split(" ");
+                var Ayear = newADate[2].split(",")
+                newADate = newADate[1]+" "+newADate[0]+", "+Ayear[0]
+                
+                return new Date(newBDate) - new Date(newADate);
+              });
+              console.log(news)
+        }
+
     return (
         <div className="pl-20 pr-20">
 
@@ -70,6 +92,17 @@ const Card = ({ category,
             < SubHeadline news={news[3]} category={category}/>
             < SubHeadline news={news[4]} category={category}/>
             </div>
+            
+            {archived &&
+                        <div className="grid grid-cols-2 gap-20">
+                        < SubHeadline news={news[news.length-1]} category={category}/>
+                        < SubHeadline news={news[news.length-2]} category={category}/>
+                        </div>
+            }
+            
+
+
+
             <hr className="mt-8 mb-8"/>
             
         </div>

@@ -7,7 +7,7 @@ import { categories } from './category';
 
 const Landing = () => {
     const [news, setNews] = useState([]);
-    const { categoryList, setCategoryList, setCatParam, catParam } = useContext(filterContext)
+    const { categoryList, setCategoryList, setCatParam, catParam, archived, setArchived } = useContext(filterContext)
 
     useEffect(() => {
         fetchNews();
@@ -36,6 +36,7 @@ const Landing = () => {
                   categoryList.map(( name ) => {
                           return(<Tag label={name.charAt(0).toUpperCase()+name.slice(1)}  onClose={() => handleClose(name)}/>)
                         })}
+                    {archived && <Tag label="Archived"  onClose={() => setArchived(false)}/>}    
               </div>
           {
             news.map(n => {

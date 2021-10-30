@@ -8,8 +8,9 @@ import { useCallback } from 'react';
 const FilterPane = ({ showPane, setShowPane }) => {
   
 
-  const { checkedState, setCheckedState, categoryList, setCategoryList, updateState, catParam } = useContext(filterContext)
+  const { checkedState, setCheckedState, categoryList, setCategoryList, updateState, catParam, archived, setArchived } = useContext(filterContext)
   const [prevState, setPrevState] = useState(checkedState);
+  const [archiveValue,setArchiveValue] = useState(archived);
 
   useEffect(()=>{
     updateChangedCategoryList()
@@ -66,7 +67,7 @@ const FilterPane = ({ showPane, setShowPane }) => {
 
             </div>
           <hr className="w-full" />
-          <Checkbox checked id="archived" label="Include archived articles" />
+          <Checkbox checked={archiveValue} onChange={()=>setArchiveValue(!archiveValue)} id="archived" label="Include archived articles" />
           
         </Pane.Body>
 
@@ -76,6 +77,7 @@ const FilterPane = ({ showPane, setShowPane }) => {
             size="large"
             label="Save Changes"
             onClick={() => {
+              setArchived(archiveValue)
               setShowPane(false);
 
             }}

@@ -17,6 +17,7 @@ const App = () => {
   const [checkedState, setCheckedState] = useState(
     categories.map(({ id }) => categoryList.includes(id))
   );
+  const [archived, setArchived] = useState(false)
 
   const updateState = (updatedCheckedState) => {
     setCheckedState(updatedCheckedState);
@@ -37,7 +38,9 @@ const App = () => {
     setCategoryList,
     updateState,
     catParam,
-    setCatParam
+    setCatParam,
+    archived,
+    setArchived
   };
 
   return (
