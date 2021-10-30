@@ -1,21 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Typography } from "@bigbinary/neetoui/v2";
 import SubHeadline from "../SubHeadline";
+import { Copy } from "@bigbinary/neeto-icons";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const Article = () => {
+    const [copied, setCopied] = useState(false);
   const { slug } = useParams();
   const { state } = useLocation();
   const { news, category } = state;
+  
   const url = `https://www.inshorts.com/en/news/`;
   useEffect(() => {}, []);
+  const handleCopy = () => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000)
+
+  }
   return (
     <div className="pl-40 pr-40 pt-10 ">
       {console.log(state)}
 
-      <Typography style="h1" className="text-left">
-        {news.title}
-      </Typography>
+     <div className="text-left">
+      <Typography style="h1" className="text-left" >
+        {news.title }
+     </Typography>
+     <div className="flex">
+    <CopyToClipboard text={news.readMoreUrl} onCopy={() => handleCopy()}>
+        <Copy color="#1e1e20" size={24} />
+    </CopyToClipboard>
+    
+        
+    {copied ? <p className="text-gray-400 pl-3"> Copied</p> : null}
+    </div>
+    </div>
       {/* <a href={url+slug}>Click me</a> */}
 
       <div className="pt-1">
