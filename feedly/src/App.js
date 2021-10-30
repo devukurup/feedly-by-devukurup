@@ -5,6 +5,7 @@ import filterContext from "./contexts/filter";
 import { categories } from "./category";
 import Article from "./Article";
 import { Switch, Route } from "react-router-dom";
+import Search from "./Search";
 
 const App = () => {
   const [categoryList, setCategoryList] = useState([
@@ -47,7 +48,7 @@ const App = () => {
     <div>
       <filterContext.Provider value={newsFeedFilter}>
         <Navbar />
-
+        <Search />
         <Switch>
           <Route exact path="/">
             <Landing />
