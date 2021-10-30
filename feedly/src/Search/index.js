@@ -58,12 +58,12 @@ function SearchModal() {
   return ReactDOM.createPortal(
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" onClick={() => setEnableModal(false)}>
       <div className="relative top-1/3 mx-auto p-5 w-1/3 " onClick={(e) => e.stopPropagation()}>
-        <Input className="focus:outline-none" prefix={<Search size={15} color="#1e1e20" />} placeholder="Search for an article" suffix={<Down size={15} color="#1e1e20" />} onChange={handleChange} />
-        <div className="bg-white">
+        <Input className="outline-none focus:neeto-ui-border-none" prefix={<Search size={15} color="#1e1e20" />} placeholder="Search for an article" suffix={<Down size={15} color="#1e1e20" />} onChange={handleChange} />
+        <div className="bg-white ">
             {
                 cardEnabler && 
                 suggestionNews.map((news) => {
-                return( <div className="border">
+                return( <div className="border-b-2 p-2 ">
                 <Typography className="cursor-pointer" style="body2" onClick={() => {
                                     setSuggestionNews([])
                                     setCardEnabler(false);
