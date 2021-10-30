@@ -10,6 +10,7 @@ const FilterPane = ({ showPane, setShowPane }) => {
 
   const { checkedState, setCheckedState, categoryList, setCategoryList, updateState, catParam, archived, setArchived } = useContext(filterContext)
   const [prevState, setPrevState] = useState(checkedState);
+  const [archiveValue,setArchiveValue] = useState(archived);
 
   useEffect(()=>{
     updateChangedCategoryList()
@@ -66,7 +67,7 @@ const FilterPane = ({ showPane, setShowPane }) => {
 
             </div>
           <hr className="w-full" />
-          <Checkbox checked={archived} onChange={()=>setArchived(!archived)} id="archived" label="Include archived articles" />
+          <Checkbox checked={archiveValue} onChange={()=>setArchiveValue(!archiveValue)} id="archived" label="Include archived articles" />
           
         </Pane.Body>
 
@@ -76,6 +77,7 @@ const FilterPane = ({ showPane, setShowPane }) => {
             size="large"
             label="Save Changes"
             onClick={() => {
+              setArchived(archiveValue)
               setShowPane(false);
 
             }}
