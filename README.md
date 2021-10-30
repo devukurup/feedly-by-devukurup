@@ -47,9 +47,14 @@ In this challenge, you need to build a News Feeds Dashboard.
     - Once you finish building the dashboard, try it out yourself to see if there are any edge-cases that you missed.
     - You may use whatever packages and tools that you think are appropriate.
     - We are looking for you to demonstrate your knowledge related to common software practices to include reusability, portability, and encapsulation - to name a few.
+
+
 5. **Make commits incrementally.**
     - ***Please do not squash commit before creating the pull request. We want to see incremental commits***.
 6.  **Deploy the application**
     - Deploy the application on Vercel. Post the link of the deployed application as a comment in the issue.
 7.  **Ready for code review**
     - As a final step post a comment in the issue saying " **@karthiknmenon** , **@mazahirharoon**, **@jagankaartik** The application is ready for the code review.**" and assign the issue to your collaborator.".
+
+
+Webhook endpoint [link](https://webhook.site/#!/ed4a3dbf-6644-4361-b621-e07062577df4/d55570b9-0b3b-4ad4-afde-461194964663/1)
