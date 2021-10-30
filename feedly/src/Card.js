@@ -99,6 +99,12 @@ const Card = ({ category,
                         < SubHeadline news={news[news.length-2]} category={category}/>
                         </div>
             }
+            {archived &&
+                        <div className="grid grid-cols-2 gap-20">
+                        < SubHeadline news={news[news.length-3]} category={category}/>
+                        < SubHeadline news={news[news.length-4]} category={category}/>
+                        </div>
+            }
             
 
 
