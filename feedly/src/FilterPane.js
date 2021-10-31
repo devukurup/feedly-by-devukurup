@@ -39,7 +39,7 @@ const FilterPane = ({ showPane, setShowPane }) => {
 
 
   return (
-    <div>
+    <div className="flex items-end">
       <Pane isOpen={showPane} onClose={() => {
               setShowPane(false);
               handleOnCancelled(prevState)}}>
