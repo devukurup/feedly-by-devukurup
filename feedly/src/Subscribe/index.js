@@ -8,11 +8,29 @@ import subscribeApi from '../apis/subscribe';
 function Subscribe() {
     const {  subscribeModal, setSubscribeModal  } = useContext(filterContext)
     const [email, setEmail] = useState('');
+    const [requiredError, setRequiredError] = useState(true)
+
+const handleChange = (e) => {
+  setEmail(e.target.value);
+  if(email.length <= 2)
+  {
+    setRequiredError(true)
+  }
+  else{
+  setRequiredError(false)
+  }
+}
 
     const handleSave = () => {
+        if(email.length <= 2)
+        {
+          setRequiredError(true)
+        }
+        else{
         console.log(email);
         subscribeApi.subscribe(email);
         setSubscribeModal(false);
+        }
         
 
     }
@@ -23,7 +41,7 @@ function Subscribe() {
           <img className="w-auto mx-auto" src={imag} alt="Subscribe" />
           <Typography style="h2">Subscribe to Feed.ly</Typography>
           <Typography style="body2">We don’t spam, but, we deliver the latest news in short.</Typography>
-          <Input placeholder="oliver@example.com" error="Email is required" onChange={(e) => setEmail(e.target.value)}/>
+          <Input placeholder="oliver@example.com"  error={requiredError && "Email is required"} onChange={(e) => handleChange(e)}/>
           <div className="space-x-2">
               <Button label="Sign Up" style="primary" onClick={handleSave} />
               <Button label="Cancel" style="text" onClick={()=> setSubscribeModal(false)}/>
