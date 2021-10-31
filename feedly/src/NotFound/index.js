@@ -9,7 +9,7 @@ const NoNewsFound = () => {
             <div className="mx-auto justify-items-center space-y-3">
             <img className="w-80 mx-auto" src={imag} alt="No New Articles Found" />
             <Typography className="mx-auto text-center" style="h2">No News Articles Found</Typography>
-            <Button label={<Typography prefix="hello" iconPosition="left" style="h4">Write to us</Typography>}  style="secondary" />
+            <Button iconPosition="left" icon={Highlight} label={<Typography style="h4">Write to us</Typography>}  style="secondary" />
             </div>
             
         </div>
