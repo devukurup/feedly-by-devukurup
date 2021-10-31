@@ -7,7 +7,7 @@ import Article from "./Article";
 import { Switch, Route } from "react-router-dom";
 import SearchModal from "./Search";
 import Subscribe from "./Subscribe";
-import NoNewsFound from "./NotFound";
+import WriteToUs from "./NotFound/WriteToUs";
 
 const App = () => {
   const [categoryList, setCategoryList] = useState([
@@ -22,6 +22,7 @@ const App = () => {
   const [checkedState, setCheckedState] = useState(
     categories.map(({ id }) => categoryList.includes(id))
   );
+  const [writeToUsModal, setWriteToUsModal] = useState(false)
   const [archived, setArchived] = useState(false)
 
   const updateState = (updatedCheckedState) => {
@@ -49,7 +50,9 @@ const App = () => {
     enableModal,
     setEnableModal,
     subscribeModal,
-    setSubscribeModal
+    setSubscribeModal,
+    writeToUsModal,
+    setWriteToUsModal
   };
 
   return (
@@ -58,6 +61,7 @@ const App = () => {
         <Navbar />
         {enableModal && <SearchModal />}
         {subscribeModal && <Subscribe/>}
+        {writeToUsModal && <WriteToUs />}
         
         <Switch>
           <Route exact path="/">

@@ -28,7 +28,10 @@ const handleChange = (e) => {
         }
         else{
         console.log(email);
-        subscribeApi.subscribe(email);
+        const sub = new Object();
+        sub.email = email
+        console.log(sub)
+        subscribeApi.subscribe(sub);
         setSubscribeModal(false);
         }
         
