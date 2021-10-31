@@ -4,6 +4,7 @@ import Card from './Card';
 import filterContext from './contexts/filter';
 import { Tag } from "@bigbinary/neetoui/v2";
 import { categories } from './category';
+import NoNewsFound from './NotFound';
 
 const Landing = () => {
     const [news, setNews] = useState([]);
@@ -38,12 +39,18 @@ const Landing = () => {
                         })}
                     {archived && <Tag label="Archived"  onClose={() => setArchived(false)}/>}    
               </div>
-          {
+          { (categoryList.length > 0) &&
             news.map(n => {
               return(<Card category={n.data.category} news={n.data.data}/>)
             })
+          }
+          {
+            categoryList.length <= 0 && 
+            <NoNewsFound />
 
           }
+
+          
         </div>
     )
 }
