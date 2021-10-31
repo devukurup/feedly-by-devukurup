@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import filterContext from '../contexts/filter';
 import { Button, Typography, Input } from "@bigbinary/neetoui/v2";
-import imag from '../assets/orange.png';
+import imag from '../assets/subscribe.png';
 import ReactDOM from "react-dom";
 import subscribeApi from '../apis/subscribe';
 

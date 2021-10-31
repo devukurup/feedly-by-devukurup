@@ -7,6 +7,7 @@ import Article from "./Article";
 import { Switch, Route } from "react-router-dom";
 import SearchModal from "./Search";
 import Subscribe from "./Subscribe";
+import NoNewsFound from "./NotFound";
 
 const App = () => {
   const [categoryList, setCategoryList] = useState([
