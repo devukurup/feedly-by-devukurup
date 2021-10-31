@@ -39,7 +39,7 @@ const FilterPane = ({ showPane, setShowPane }) => {
 
 
   return (
-    <div>
+    <>
       <Pane isOpen={showPane} onClose={() => {
               setShowPane(false);
               handleOnCancelled(prevState)}}>
@@ -87,7 +87,7 @@ const FilterPane = ({ showPane, setShowPane }) => {
           />
         </Pane.Footer>
       </Pane>
-    </div>
+    </>
   );
 };
 

@@ -76,6 +76,7 @@ const App = () => {
           </Route>
         </Switch>
       </filterContext.Provider>
+      
     </div>
   );
 };
