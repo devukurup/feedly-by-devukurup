@@ -44,7 +44,7 @@ const handleChange = (e) => {
           <img className="w-auto mx-auto" src={imag} alt="Subscribe" />
           <Typography style="h2">Subscribe to Feed.ly</Typography>
           <Typography style="body2">We don’t spam, but, we deliver the latest news in short.</Typography>
-          <Input placeholder="oliver@example.com"  error={requiredError && "Email is required"} onChange={(e) => handleChange(e)}/>
+          <Input placeholder="oliver@example.com" type="email" error={requiredError && "Email is required"} onChange={(e) => handleChange(e)}/>
           <div className="space-x-2">
               <Button label="Sign Up" style="primary" onClick={handleSave} />
               <Button label="Cancel" style="text" onClick={()=> setSubscribeModal(false)}/>

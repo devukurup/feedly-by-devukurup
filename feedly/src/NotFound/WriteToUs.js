@@ -29,7 +29,7 @@ const WriteToUs = () => {
         </div>
           <div className="flex space-x-5">
                 <Input label="Name" placeholder="Oliver Smith" onChange={(e) => setName(e.target.value)}/> 
-                <Input  label="Email" placeholder="oliver@example.com" onChange={(e) => setEmail(e.target.value)}/>
+                <Input  label="Email" placeholder="oliver@example.com" type="email" onChange={(e) => setEmail(e.target.value)}/>
           </div>
           <Textarea className="w-auto h-28 " label="Message" placeholder="Write your message here." onChange={(e) => setMessage(e.target.value)}/>
           <div className="space-x-2">
