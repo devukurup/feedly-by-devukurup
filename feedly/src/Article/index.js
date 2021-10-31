@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { Typography } from "@bigbinary/neetoui/v2";
+import { Typography, PageLoader } from "@bigbinary/neetoui/v2";
 import SubHeadline from "../SubHeadline";
 import { Copy } from "@bigbinary/neeto-icons";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -8,6 +8,7 @@ import newsApi from "../apis/news";
 
 const Article = () => {
   const [copied, setCopied] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const { slug } = useParams();
   const { state } = useLocation();
   const news = state.news? state.news : state.headlines;
@@ -16,6 +17,7 @@ const Article = () => {
   
   useEffect(() => {
     fetchNews();
+    setLoading(true);
   }, [slug]);
   
   const currentUrl = `https://www.inshorts.com/en/news/`+slug;
@@ -25,6 +27,7 @@ const Article = () => {
       const response = await newsApi.fetch([category]);
     //   console.log(response[0].data.data)
       const newHeadlines = response[0].data.data.filter(({ url }) => url !== currentUrl)
+      setLoading(false);
       console.log(newHeadlines)
       setSubHeadlines(newHeadlines);
       console.log(subHeadlines)
@@ -72,7 +75,10 @@ const Article = () => {
       <div className="pt-12 pb-12">
       <hr />
       </div>
-      <div className=" grid grid-rows-2 gap-5">
+      {
+        isLoading && <PageLoader />
+      }
+     { (!isLoading) && <div className=" grid grid-rows-2 gap-5">
 
 
 <div className="grid grid-cols-2 gap-20">
@@ -87,7 +93,7 @@ const Article = () => {
 </div>
 <hr className="mt-8 mb-8"/>
 
-</div>
+</div>}
     </div>
   );
 };
