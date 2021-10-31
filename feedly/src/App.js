@@ -8,6 +8,7 @@ import { Switch, Route } from "react-router-dom";
 import SearchModal from "./Search";
 import Subscribe from "./Subscribe";
 import WriteToUs from "./NotFound/WriteToUs";
+import ErrorBoundary from "./ErrorBoundary";
 
 const App = () => {
   const [categoryList, setCategoryList] = useState([
@@ -69,6 +70,9 @@ const App = () => {
           </Route>
           <Route exact path="/article/:slug">
             <Article />
+          </Route>
+          <Route >
+            <ErrorBoundary />
           </Route>
         </Switch>
       </filterContext.Provider>
