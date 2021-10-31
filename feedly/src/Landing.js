@@ -2,22 +2,27 @@ import React, {useEffect, useState, useContext} from 'react';
 import newsApi from './apis/news';
 import Card from './Card';
 import filterContext from './contexts/filter';
-import { Tag } from "@bigbinary/neetoui/v2";
+import { Tag, PageLoader } from "@bigbinary/neetoui/v2";
 import { categories } from './category';
 import NoNewsFound from './NotFound';
 
 const Landing = () => {
     const [news, setNews] = useState([]);
     const { categoryList, setCategoryList, setCatParam, catParam, archived, setArchived } = useContext(filterContext)
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchNews();
+        setLoading(true);
+        
        
       },[categoryList]);
 
       const fetchNews = async () => {
         try {
+          
           const response = await newsApi.fetch(categoryList);
+          setLoading(false)
           // console.log(response)
           setNews(response);
         } catch (error) {
@@ -32,6 +37,9 @@ const Landing = () => {
     return (
         <div className="pt-10 pl-20 pr-20">
               <div className="pl-20 pr-20 space-x-3">
+                {
+                  isLoading && <PageLoader />
+                }
                 
                   {
                   categoryList.map(( name ) => {
@@ -39,7 +47,7 @@ const Landing = () => {
                         })}
                     {archived && <Tag label="Archived"  onClose={() => setArchived(false)}/>}    
               </div>
-          { (categoryList.length > 0) &&
+          { (!isLoading) && (categoryList.length > 0) &&
             news.map(n => {
               return(<Card category={n.data.category} news={n.data.data}/>)
             })
