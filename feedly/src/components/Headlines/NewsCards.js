@@ -42,7 +42,7 @@ const Card = ({ category, news }) => {
           <div>
             <img
               className=" object-fill h-auto w-auto"
-              src={"https://picsum.photos/seed/picsum/526/263"} alt="News"
+              src={"https://picsum.photos/526/263"} alt="News"
             />
           </div>
 
