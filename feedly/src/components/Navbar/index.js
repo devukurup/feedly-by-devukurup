@@ -1,20 +1,14 @@
 import React, { useState, useContext } from "react";
 import { Header } from "@bigbinary/neetoui/v2/layouts";
 import { Button, Typography, Tooltip } from "@bigbinary/neetoui/v2";
-import { Search, Filter, Notification, Check } from "@bigbinary/neeto-icons";
-// import FilterPane from "./FilterPane";
-// import FilterPane from "../Filter";
-// import FilterPane from "../Filter";
+import { Search, Filter, Notification } from "@bigbinary/neeto-icons";
 import FilterPane from "../Filter";
 import { useHistory, useLocation } from "react-router-dom";
-// import filterContext from "../../contexts/filter";
-// import filterContext from "../../contexts/filter";
 import filterContext from "../../contexts/filter";
 
 const Navbar = () => {
-
   const history = useHistory();
-  const {  enableModal, setEnableModal, setSubscribeModal  } = useContext(filterContext)
+  const { setEnableModal, setSubscribeModal } = useContext(filterContext);
   const [showPane, setShowPane] = useState(false);
   const location = useLocation();
   return (
@@ -24,13 +18,21 @@ const Navbar = () => {
           <div className=" flex items-end space-x-3 ">
             <Tooltip content="Search" placement="bottom-end">
               <button>
-                <Search color="#1e1e20" size={25} onClick={() => setEnableModal(true)} />
+                <Search
+                  color="#1e1e20"
+                  size={25}
+                  onClick={() => setEnableModal(true)}
+                />
               </button>
             </Tooltip>
 
             <Tooltip content="Subscribe" placement="bottom-end">
               <button>
-                <Notification color="#1e1e20" size={25} onClick={() => setSubscribeModal(true)}/>
+                <Notification
+                  color="#1e1e20"
+                  size={25}
+                  onClick={() => setSubscribeModal(true)}
+                />
               </button>
             </Tooltip>
 
@@ -40,19 +42,21 @@ const Navbar = () => {
                 icon={Filter}
                 style="secondary"
                 onClick={() => {
-                  if(location.pathname !== `/`)
-                  {
-                    history.push('/')
+                  if (location.pathname !== `/`) {
+                    history.push("/");
                   }
-                  return  setShowPane(true);
-                } }
+                  return setShowPane(true);
+                }}
               />
             </div>
           </div>
         }
         title={
-          <Typography style="h3" className="text-grey-700 cursor-pointer" 
-          onClick={() => history.push(`/`)}>
+          <Typography
+            style="h3"
+            className="text-grey-700 cursor-pointer"
+            onClick={() => history.push(`/`)}
+          >
             Feed.ly
           </Typography>
         }
