@@ -55,7 +55,7 @@ const Article = () => {
         </Typography>
       </div>
       <div className=" flex items-center justify-center pt-10">
-        <img src={"https://picsum.photos/seed/picsum/543/304"} alt="Article" />
+        <img src={"https://picsum.photos/543/304"} alt="Article" />
       </div>
       <div className="pt-20 space-y-5">
         <Typography style="body2">{news?.content}</Typography>
