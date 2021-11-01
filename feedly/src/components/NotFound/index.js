@@ -16,7 +16,6 @@ const NoNewsFound = () => {
   const fetchNews = async () => {
     try {
       const response = await newsApi.fetch([category]);
-      console.log(response);
       setNews(response[0].data.data);
     } catch (error) {
       console.log(error);

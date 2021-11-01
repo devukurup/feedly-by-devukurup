@@ -23,10 +23,8 @@ function Subscribe() {
     if (email.length <= 2) {
       setRequiredError(true);
     } else {
-      console.log(email);
       const sub = new Object();
       sub.email = email;
-      console.log(sub);
       subscribeApi.subscribe(sub);
       setSubscribeModal(false);
     }

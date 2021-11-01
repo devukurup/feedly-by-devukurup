@@ -40,9 +40,10 @@ const Landing = () => {
       <div className="pl-20 pr-20 space-x-3">
         {isLoading && <PageLoader />}
 
-        {categoryList.map((name) => {
+        {categoryList.map((name, index) => {
           return (
             <Tag
+              key={index+1}
               label={name.charAt(0).toUpperCase() + name.slice(1)}
               onClose={() => handleClose(name)}
             />
@@ -54,8 +55,8 @@ const Landing = () => {
       </div>
       {!isLoading &&
         categoryList.length > 0 &&
-        news.map((n) => {
-          return <Card category={n.data.category} news={n.data.data} />;
+        news.map((n, index) => {
+          return <Card key={index+1} category={n.data.category} news={n.data.data} />;
         })}
       {categoryList.length <= 0 && <NoNewsFound />}
     </div>

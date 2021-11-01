@@ -11,7 +11,7 @@ const SubHeadline = (props) => {
       <div>
         <img
           className=" object-fill h-auto w-auto"
-          src={"https://picsum.photos/seed/picsum/200/100"}
+          src={"https://picsum.photos/seed/picsum/200/100"} alt="News"
         />
       </div>
       <div>

@@ -9,8 +9,7 @@ import { useHistory } from "react-router-dom";
 
 function SearchModal() {
   const history = useHistory();
-  const { enableModal, setEnableModal, categoryList } =
-    useContext(filterContext);
+  const { setEnableModal, categoryList } = useContext(filterContext);
   const [searchValue, setSearchValue] = useState("");
   const [categoryNews, setCategoryNews] = useState([]);
   const [suggestionNews, setSuggestionNews] = useState([]);

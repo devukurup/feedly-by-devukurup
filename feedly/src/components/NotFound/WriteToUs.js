@@ -15,7 +15,6 @@ const WriteToUs = () => {
     query.name = name;
     query.email = email;
     query.message = message;
-    console.log(query);
     mailApi.sendMail(query);
     setWriteToUsModal(false);
   };

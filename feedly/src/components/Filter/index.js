@@ -60,6 +60,7 @@ const FilterPane = ({ showPane, setShowPane }) => {
             {categories.map(({ name, id }, index) => {
               return (
                 <Checkbox
+                  key={id}
                   onChange={() => handleOnChange(index)}
                   checked={checkedState[index]}
                   label={name}
