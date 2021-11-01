@@ -1,48 +1,51 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import { Button, Typography, Pane, Checkbox } from "@bigbinary/neetoui/v2";
 import { Check } from "@bigbinary/neeto-icons";
-import { categories } from "./category";
-import filterContext from "./contexts/filter";
-import { useCallback } from 'react';
+import { categories } from "../../utils/category";
+import filterContext from "../../contexts/filter";
 
 const FilterPane = ({ showPane, setShowPane }) => {
-  
-
-  const { checkedState, setCheckedState, categoryList, setCategoryList, updateState, catParam, archived, setArchived } = useContext(filterContext)
+  const {
+    checkedState,
+    setCheckedState,
+    categoryList,
+    updateState,
+    catParam,
+    archived,
+    setArchived,
+  } = useContext(filterContext);
   const [prevState, setPrevState] = useState(checkedState);
-  const [archiveValue,setArchiveValue] = useState(archived);
+  const [archiveValue, setArchiveValue] = useState(archived);
 
-  useEffect(()=>{
-    updateChangedCategoryList()
-  },[catParam])
+  useEffect(() => {
+    updateChangedCategoryList();
+  }, [catParam]);
 
   const updateChangedCategoryList = useCallback(() => {
     setCheckedState(categories.map(({ id }) => categoryList.includes(id)));
-  })
+  });
 
   const handleOnChange = (position) => {
-    
-   const updatedCheckedState = checkedState.map((item, index) => {
-        return(index === position ? !item : item)
-      
-    }
-    )
+    const updatedCheckedState = checkedState.map((item, index) => {
+      return index === position ? !item : item;
+    });
 
-    updateState(updatedCheckedState)
-
-    
+    updateState(updatedCheckedState);
   };
 
   const handleOnCancelled = (prevState) => {
-    updateState(prevState)
-  }
-
+    updateState(prevState);
+  };
 
   return (
     <div>
-      <Pane isOpen={showPane} onClose={() => {
-              setShowPane(false);
-              handleOnCancelled(prevState)}}>
+      <Pane
+        isOpen={showPane}
+        onClose={() => {
+          setShowPane(false);
+          handleOnCancelled(prevState);
+        }}
+      >
         <Pane.Header>
           <Typography style="h2" weight="semibold">
             Filter Articles
@@ -55,13 +58,25 @@ const FilterPane = ({ showPane, setShowPane }) => {
           </Typography>
           <div className="space-y-9">
             {categories.map(({ name, id }, index) => {
-              return(<Checkbox onChange={()=>handleOnChange(index)} checked={checkedState[index]}  label={name} id={id} />)
+              return (
+                <Checkbox
+                  key={id}
+                  onChange={() => handleOnChange(index)}
+                  checked={checkedState[index]}
+                  label={name}
+                  id={id}
+                />
+              );
             })}
-
-            </div>
+          </div>
           <hr className="w-full " />
-          <Checkbox  className="pb-10" checked={archiveValue} onChange={()=>setArchiveValue(!archiveValue)} id="archived" label="Include archived articles" />
-          
+          <Checkbox
+            className="pb-10"
+            checked={archiveValue}
+            onChange={() => setArchiveValue(!archiveValue)}
+            id="archived"
+            label="Include archived articles"
+          />
         </Pane.Body>
 
         <Pane.Footer className="flex items-center space-x-2">
@@ -70,9 +85,8 @@ const FilterPane = ({ showPane, setShowPane }) => {
             size="large"
             label="Save Changes"
             onClick={() => {
-              setArchived(archiveValue)
+              setArchived(archiveValue);
               setShowPane(false);
-
             }}
           />
           <Button
@@ -82,8 +96,7 @@ const FilterPane = ({ showPane, setShowPane }) => {
             onClick={() => {
               setShowPane(false);
               handleOnCancelled(prevState);
-              }
-            }
+            }}
           />
         </Pane.Footer>
       </Pane>
