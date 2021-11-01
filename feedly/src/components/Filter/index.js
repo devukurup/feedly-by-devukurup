@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
 import { Button, Typography, Pane, Checkbox } from "@bigbinary/neetoui/v2";
 import { Check } from "@bigbinary/neeto-icons";
-import { categories } from "../../utils/category";
-import filterContext from "../../contexts/filter";
+import { categories } from "utils/category";
+import filterContext from "contexts/filter";
 
 const FilterPane = ({ showPane, setShowPane }) => {
   const {

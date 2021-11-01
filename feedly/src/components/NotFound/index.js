@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import imag from "../../assets/notfound.png";
 import { Typography, Button } from "@bigbinary/neetoui/v2";
 import { Highlight } from "@bigbinary/neeto-icons";
-import SubHeadline from "../Headlines/SubHeadline";
-import newsApi from "../../apis/news";
-import filterContext from "../../contexts/filter";
+import SubHeadline from "components/Headlines/SubHeadline";
+import newsApi from "apis/news";
+import filterContext from "contexts/filter";
 
 const NoNewsFound = () => {
   useEffect(() => {

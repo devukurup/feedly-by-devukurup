@@ -1,5 +1,5 @@
 import React from "react";
-import imag from "../../assets/error.svg";
+import imag from "assets/error.svg";
 import { Button, Typography } from "@bigbinary/neetoui/v2";
 import { Home } from "@bigbinary/neeto-icons";
 import { useHistory } from "react-router-dom";
