@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
-import newsApi from "../../apis/news";
-import Card from "../Headlines/NewsCards";
-import filterContext from "../../contexts/filter";
+import newsApi from "apis/news";
+import Card from "components/Headlines/NewsCards";
+import filterContext from "contexts/filter";
 import { Tag, PageLoader } from "@bigbinary/neetoui/v2";
-import NoNewsFound from "../NotFound";
+import NoNewsFound from "components/NotFound";
 
 const Landing = () => {
   const [news, setNews] = useState([]);
