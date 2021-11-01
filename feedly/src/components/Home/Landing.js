@@ -1,11 +1,11 @@
 import React, {useEffect, useState, useContext} from 'react';
-import newsApi from '../apis/news';
-import Card from './Card';
-import filterContext from '../contexts/filter';
+import newsApi from '../../apis/news';
+import Card from '../Headlines/NewsCards';
+import filterContext from '../../contexts/filter';
 import { Tag, PageLoader } from "@bigbinary/neetoui/v2";
-import { categories } from '../utils/category';
+import { categories } from '../../utils/category';
 // import NoNewsFound from '../NotFound';
-import NoNewsFound from './NotFound';
+import NoNewsFound from '../NotFound';
 
 const Landing = () => {
     const [news, setNews] = useState([]);

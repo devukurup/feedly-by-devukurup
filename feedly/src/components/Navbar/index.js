@@ -2,9 +2,14 @@ import React, { useState, useContext } from "react";
 import { Header } from "@bigbinary/neetoui/v2/layouts";
 import { Button, Typography, Tooltip } from "@bigbinary/neetoui/v2";
 import { Search, Filter, Notification, Check } from "@bigbinary/neeto-icons";
-import FilterPane from "./FilterPane";
+// import FilterPane from "./FilterPane";
+// import FilterPane from "../Filter";
+// import FilterPane from "../Filter";
+import FilterPane from "../Filter";
 import { useHistory, useLocation } from "react-router-dom";
-import filterContext from "../contexts/filter";
+// import filterContext from "../../contexts/filter";
+// import filterContext from "../../contexts/filter";
+import filterContext from "../../contexts/filter";
 
 const Navbar = () => {
 

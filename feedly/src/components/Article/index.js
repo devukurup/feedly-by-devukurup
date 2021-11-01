@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Typography, PageLoader } from "@bigbinary/neetoui/v2";
-import SubHeadline from "../SubHeadline";
+// import SubHeadline from "../SubHeadline";
+import SubHeadline from "../Headlines/SubHeadline";
 import { Copy } from "@bigbinary/neeto-icons";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import newsApi from "../../apis/news";

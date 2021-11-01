@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
+import Navbar from "./components/Navbar";
 // import Navbar from "./Navbar";
-import Landing from "./components/Landing";
+import Landing from "./components/Home/Landing";
 import filterContext from "./contexts/filter";
+// import { categories } from "./utils/category";
 import { categories } from "./utils/category";
 import Article from "./components/Article";
 import { Switch, Route } from "react-router-dom";
