@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import Navbar from "./Navbar";
-import Landing from "./Landing";
+import Navbar from './components/Navbar';
+// import Navbar from "./Navbar";
+import Landing from "./components/Landing";
 import filterContext from "./contexts/filter";
-import { categories } from "./category";
-import Article from "./Article";
+import { categories } from "./utils/category";
+import Article from "./components/Article";
 import { Switch, Route } from "react-router-dom";
-import SearchModal from "./Search";
-import Subscribe from "./Subscribe";
-import WriteToUs from "./NotFound/WriteToUs";
-import ErrorBoundary from "./ErrorBoundary";
+import SearchModal from "./components/Search";
+import Subscribe from "./components/Subscribe";
+// import WriteToUs from "./components/NotFound/WriteToUs";
+import WriteToUs from "./components/NotFound/WriteToUs"
+
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const App = () => {
   const [categoryList, setCategoryList] = useState([

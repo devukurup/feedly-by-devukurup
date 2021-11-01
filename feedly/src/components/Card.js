@@ -3,7 +3,7 @@ import { Header } from "@bigbinary/neetoui/v2/layouts";
 import { Typography, Button} from "@bigbinary/neetoui/v2";
 import SubHeadline from './SubHeadline';
 import { useHistory } from "react-router-dom";
-import filterContext from "./contexts/filter";
+import filterContext from "../contexts/filter";
 
 
 const Card = ({ category, 

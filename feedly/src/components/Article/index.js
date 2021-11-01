@@ -4,7 +4,7 @@ import { Typography, PageLoader } from "@bigbinary/neetoui/v2";
 import SubHeadline from "../SubHeadline";
 import { Copy } from "@bigbinary/neeto-icons";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import newsApi from "../apis/news";
+import newsApi from "../../apis/news";
 
 const Article = () => {
   const [copied, setCopied] = useState(false);

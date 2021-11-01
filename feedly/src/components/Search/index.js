@@ -2,8 +2,8 @@ import React, {useContext, useState, useEffect, useMemo} from "react";
 import ReactDOM from "react-dom";
 import { Input, Typography } from "@bigbinary/neetoui/v2";
 import { Search, Down } from "@bigbinary/neeto-icons";
-import filterContext from "../contexts/filter";
-import newsApi from "../apis/news";
+import filterContext from "../../contexts/filter";
+import newsApi from "../../apis/news";
 import debounce from "lodash/debounce";
 import { useHistory } from "react-router-dom";
 

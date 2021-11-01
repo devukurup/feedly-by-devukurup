@@ -1,8 +1,10 @@
 import React, {useContext,useState} from 'react';
 import { Button, Typography, Input, Textarea } from "@bigbinary/neetoui/v2";
-import filterContext from '../contexts/filter';
+// import filterContext from '../contexts/filter';
+import filterContext from '../../contexts/filter';
 import ReactDOM from "react-dom";
-import mailApi from '../apis/mail';
+// import mailApi from '../apis/mail';
+import mailApi from '../../apis/mail';
 
 const WriteToUs = () => {
     const {  writeToUsModal, setWriteToUsModal } = useContext(filterContext);
